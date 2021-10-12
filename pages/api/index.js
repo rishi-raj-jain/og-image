@@ -3,7 +3,7 @@ import { generatePage } from '@/lib/page'
 import chromium from 'chrome-aws-lambda'
 
 export default async function handler(req, res) {
-  const { title } = req.query
+  const { title, width = 1920, height = 1080 } = req.query
   const dom = generatePage(title)
   const browser = await chromium.puppeteer.launch({
     args: chromium.args,
@@ -18,10 +18,7 @@ export default async function handler(req, res) {
       collapseWhitespace: true,
     })
   )
-  await page.setViewport({
-    width: 1920,
-    height: 1080,
-  })
+  await page.setViewport({ width: parseInt(width), height: parseInt(height) })
   const content = await page.$('body')
   const imageBuffer = await content.screenshot({ omitBackground: true })
   await page.close()
