@@ -1,8 +1,4 @@
-const { Router } = require('@layer0/core/router')
-const { nextRoutes } = require('@layer0/next')
+const { nextRoutes } = require('@edgio/next')
+const { Router } = require('@edgio/core/router')
 
-module.exports = new Router()
-  .match('/service-worker.js', ({ serviceWorker }) => {
-    return serviceWorker('.next/static/service-worker.js')
-  })
-  .use(nextRoutes)
+export default new Router({ indexPermalink: true }).use(nextRoutes)
