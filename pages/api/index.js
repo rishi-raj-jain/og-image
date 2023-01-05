@@ -6,20 +6,17 @@ const { generatePage } = require('@/lib/page')
 export default async function handler(req, res) {
   const { title, width = 1920, height = 1080 } = req.query
   const dom = generatePage(title)
-  console.log('Got my dom.')
   const browser = await puppeteer.launch({
     args: chrome.args,
     ignoreHTTPSErrors: true,
     headless: chrome.headless,
     executablePath: await chrome.executablePath,
   })
-  console.log('Launched the browser.')
   const page = await browser.newPage()
   await page.setContent(dom)
   await page.setViewport({ width: parseInt(width), height: parseInt(height) })
   const content = await page.$('body')
   const imageBuffer = await content.screenshot({ omitBackground: true })
-  console.log('Screenshot taken.')
   await page.close()
   await browser.close()
   res.setHeader('Cache-Control', 'public, immutable, no-transform, s-maxage=31536000, max-age=31536000')
