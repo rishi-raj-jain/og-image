@@ -1,29 +1,32 @@
 {
   "name": "og-image",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "layer0:dev": "layer0 dev",
+    "layer0:build": "layer0 build",
+    "layer0:deploy": "layer0 deploy",
+    "layer0:production": "layer0 run --production",
     "format": "prettier '**/*' --write --ignore-unknown"
   },
   "dependencies": {
-    "chrome-aws-lambda": "^10.1.0",
-    "html-minifier": "^4.0.0",
-    "next": "latest",
-    "puppeteer": "^10.4.0",
-    "react": "latest",
-    "react-dom": "latest"
+    "chrome-aws-lambda": "7.0.0",
+    "next": "^12.2.0",
+    "puppeteer-core": "^13.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@edgio/cli": "latest",
-    "@edgio/core": "latest",
-    "@edgio/devtools": "latest",
-    "@edgio/next": "latest",
-    "@edgio/prefetch": "latest",
-    "@edgio/react": "latest",
-    "prettier": "^2.4.1"
+    "@layer0/cli": "latest",
+    "@layer0/core": "latest",
+    "@layer0/devtools": "latest",
+    "@layer0/next": "latest",
+    "@layer0/prefetch": "latest",
+    "@layer0/react": "latest",
+    "prettier": "^2.8.1"
   }
 }

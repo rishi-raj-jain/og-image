@@ -1,3 +1,5 @@
 node_modules/
 .next
 .edgio
+.swc
+.layer0

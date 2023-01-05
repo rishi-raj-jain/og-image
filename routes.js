@@ -1,4 +1,5 @@
-const { nextRoutes } = require('@edgio/next')
-const { Router } = require('@edgio/core/router')
+const { Router } = require('@layer0/core/router')
 
-export default new Router({ indexPermalink: true }).use(nextRoutes)
+export default new Router().fallback(({ renderWithApp }) => {
+  renderWithApp()
+})
